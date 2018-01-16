@@ -10,7 +10,11 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.txt$/, use: 'raw-loader' }
+      { 
+       //test: /\.txt$/,
+	 test: /\.(js|jsx)$/,
+	 use: 'raw-loader'
+      }
     ]
   }
   plugins: [
