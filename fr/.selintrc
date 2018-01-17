@@ -1,0 +1,11 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "esmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true
+  }
+}
+
