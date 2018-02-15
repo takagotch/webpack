@@ -1,0 +1,45 @@
+{
+"devDependencies": {
+  "@rails/webpacker": "^3.2.1",
+  "babel-preset-react": "^6.24.1",
+  "camelize": "^1.0.0",
+  "classnames": "^2.2.5",
+  "loadash": "^4.17.4",
+  "mailcheck": "^1.1.1",
+  "prop-types": "^15.6.0",
+  "react": "^16.2.0",
+  "react-async-script": "^0.9.1",
+  "react-dom": "^16.2.0",
+},
+"devDependencies": {
+  "babel-jest": "^22.1.0",
+  "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
+  "enzyme": "^3.3.0",
+  "enzyme-adapter-react-16": "^1.1.1",
+  "jest": "^22.1.1",
+  "jest-enzyme": "^4.0.2",
+  "regenerator-runtime": "^0.11.1",
+  "webpack-dev-server": "^2.11.1",
+ 
+}
+"script": {
+  "test": "jest",
+  "test-watch": "jest --watch"
+},
+"jest": {
+  "setupTestFrameworkScriptFile": "./mode_modules/jest-enzyme/lib/index.js",
+  "moduleNameMapper":{
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|acc|oga)$": "<rootDir>/test/js/__mocks__.fileMock.js"
+    "\\.(css|scss|less)$": "<rootDir>/test/js/__mocks__/styleMock.js"
+  },
+  "roots": [
+    "app/js/packs",
+    "test/js"
+  ],
+  "moduleDirectories":[
+    "node_modules",
+    "app/js/packs"
+  ]
+}
+}
+
