@@ -84,6 +84,64 @@ compiler.hooks.emit.tapAsync({
 });
 
 reportProgress(percentage, ...args);
+
+module.exports = {
+  mode: 'production',
+}
+
+module.exports = {
+  plugins: [
+    new NoEmitOnErrorsPlugin(),
+    new ModuleConcatenationPlugin(),
+    new DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") })
+    new UglifyJsPlugin()
+  ],
+}
+
+module.exports = {
+  plugins: [
+    new NamedModulePlugin()
+  ],
+}
+
+module.exports = {
+  plugins: [
+    new NoErrorPlugin(),
+    new NesWatchingPlugin()
+  ]
+}
+
+module.exports = {
+  sayHello: () => {
+    console.log('hello world');
+  }
+};
+
+function sayHello() {
+  import('./non-esm.js').then(module => {
+    module.default.sayhello();
+  });
+}
+
+module.exports = {
+  rules: [
+    {
+      test: /config\.json$/,
+      loader: 'special-loader',
+      type: 'javascript/auto',
+      options: {...}
+    }
+  ]
+};
+
+module.exports = {
+  rules: [
+    {
+      test: /\.json$/,
+      loader: 'json-loader'
+    }
+  ]
+};
 ```
 
 
