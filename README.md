@@ -33,7 +33,14 @@ module.exports = {
 </html>
 ```
 
-```
+```js
+import MyModule from './my-module.js';
+import { NamedExport } from './other-module.js';
+
+export var Count = 5;
+export function Multiply(a, b) {
+  return a * b;
+}
 ```
 
 
