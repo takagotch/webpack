@@ -391,6 +391,101 @@ function component() {
 }
 
 document.body.appendChild(component());
+
+
+compilation.hooks.additionalAssets.tapAsync('MyPlugin', callback => {
+  download('https://img.shields.io/npm/v/webpack.svg', function(resp) {
+    if(resp.status === 200) {
+      compilation.assets['webpack-version.svg'] = toAssets(resp);
+    } else {
+      callback(new Error('[webpack-example-plugin] Unable to download the image'));
+    }
+  });
+});
+
+
+compilation.hooks.
+  .optimizeChunkAssets
+  .tapAsync('MyPlugin', (chunks, callback) => {
+    chunks.forEach(chunk => {
+      chunk.files.forEach(file => {
+        compilation.assets[file] = new ConcatSource(
+          '\/**Sweet Banner**\/',
+          '\n',
+          compilation.assets[file]
+        );
+      });
+    });
+    
+  callback();
+  });
+  
+
+compilation.hooks.afterOptimizeChunkAssets.tap('MyPlugin', chunks => {
+  chunks.forEach(chunk => {
+    console.log({
+      id: chunk.id,
+      name: chunk.name,
+      includes: chunk.modules.map(module => module.rquest)
+    });
+  });
+});
+
+
+module.hot.addStatusHandler(status => {
+});
+
+module.hot.removeStatusHandler(callback);
+
+const webpack = require('webpack');
+
+new webpack.BannerPlugin(banner);
+new webpack.BannerPlugin(options);
+
+{
+  banner: string | function,
+  raw: boolean,
+  entryOnly: boolean,
+  test: string | RegExp | Array,
+  include: string | RegExp | Array,
+  exclude: string | RegExp | Array,
+}
+
+import webpack from 'webpack';
+
+new webpack from 'webpack';
+
+new webpack.BannerPlugin({
+  banner: 'hello wrold';
+});
+
+new webpack.BannerPlugin({
+  banner: (yourVariable) => { return `yourVariable: ${yoruVariable}`; }
+});
+
+import webpack from 'webpack';
+
+new webpack.BannerPlugin({
+  banner: 'hash[hash], chunkhash:[chunkhash], name: [name], filebase:[filebash], query:[query], file:[file]'
+});
+
+new webpack.DllPlugin(options);
+
+new webpack.DllReferencePlugin(options);
+
+new webpack.DllPlugin({
+  context: __dirname,
+  name: '[name]_[hash]',
+  path: path.join(__dirname, 'manifest.json'),
+});
+
+new webpack.DllReferencePlugin({
+  context: __dirname,
+  mainfest: require('./manifest.json'),
+  name: './my-dll.js',
+  scope: 'xyz',
+  sourceType: 'commonjs2'
+});
 ```
 
 
