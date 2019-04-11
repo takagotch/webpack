@@ -486,6 +486,27 @@ new webpack.DllReferencePlugin({
   scope: 'xyz',
   sourceType: 'commonjs2'
 });
+
+{
+  test: /\.ext/
+  use: {
+    loader: '...',
+    options: {
+      ident: 'id',
+      fn: () => require('./foo.js')
+    }
+  }
+}
+
+module.exports = function(source) {
+  this.cachable();
+  return source;
+}
+
+module.exports = function(source) {
+  this.cacheable(false);
+  return source;
+}
 ```
 
 
