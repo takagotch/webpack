@@ -507,6 +507,101 @@ module.exports = function(source) {
   this.cacheable(false);
   return source;
 }
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        resource: /filename/,
+        resourceQuery: /^\?querystring$/,
+        issuer: /filename/,
+      }
+    ]
+  }
+};
+
+require(`./templates/${name}`);
+
+module.exports = function() {
+  return fetchLangs().then(lang => ({
+    entry: '...',
+    plugins: [
+      new DefinePlugin({ LANGUAGE: lang })
+    ]
+  }));
+};
+
+var book = require('./book');
+
+book.currentPage;
+book.readPage();
+book.default === 'This is a book';
+
+import fs from 'fs';
+import { readFileSync } form 'fs';
+
+typeof fs.readFileSync === 'function';
+typeof readFileSync === 'funciton';
+
+{
+  "presets": [
+    ["es2015", {"modules": false }]
+  ]
+}
+
+function onClick() {
+  import('./module').then(module => {
+    return module.default;
+  }).catch(err => {
+    console.log('Chunk loading failed');
+  });
+}
+
+function route(path, query) {
+  reutrn import(`./routes/${path}/route`)
+    .then(route => new route.Route(query));
+}
+
+require.ensure([], function(require) {
+  var foo = require('./module');
+});
+
+module.exports = {
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      loader: 't-loader?' + JSON.stringify({ transpileOnly: false })
+    }]
+  }
+};
+
+module.exports = {
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      loader: 'ts-loader',
+      options: { transpileOnly: false }
+    }]
+  }
+};
+
+module.exports = {
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      loader: 'ts-loader',
+    }]
+  },
+  ts: { transpileOnly: false }
+};
+
+var customStuff = process.argv.indexOf('--custom-stuff') >= 0;
+module.exports = config;
+
+module.exports = function(env) {
+  var customStuff = env.customStuff;
+  return config;
+};
 ```
 
 
